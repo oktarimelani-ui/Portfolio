@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melaniawati Oktari, S.H., C.P.M. - Personal Website & CV</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* CSS Variables & Reset */
+    :root {
+      --primary: #0F2027;
+      --secondary: #203A43;
+      --accent: #C5A059;
+      --accent-light: #DFBA73;
+      --text-dark: #2C3E50;
+      --text-muted: #6C757D;
+      --bg-light: #F8F9FA;
+      --white: #FFFFFF;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(15, 32, 39, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .navbar .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 160px 5% 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 85vh;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero-tag {
+      background: rgba(197, 160, 89, 0.2);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .hero h2 {
+      font-size: 1.3rem;
+      color: var(--accent-light);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #E0E0E0;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+      border: 2px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Container & Section Layout */
+    .section {
+      padding: 90px 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    /* Summary Card */
+    .card-box {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--accent);
+    }
+
+    /* Experience & Timeline */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #E2E8F0;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 4px var(--bg-light);
+    }
+
+    .timeline-content {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-content h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .timeline-role {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 5px;
+    }
+
+    .timeline-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      display: inline-block;
+      background: #F1F5F9;
+      padding: 3px 10px;
+      border-radius: 15px;
+    }
+
+    .timeline-content ul {
+      padding-left: 20px;
+      color: var(--text-dark);
+    }
+
+    .timeline-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Cards */
+    .info-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-top: 3px solid var(--accent);
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-card h3 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .cert-badge {
+      display: inline-block;
+      background: #FFF8E7;
+      color: #B45309;
+      border: 1px solid #FCD34D;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 5px;
+    }
+
+    /* Skills List */
+    .skill-category {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-category h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: #F1F5F9;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Contact Section */
+    .contact-bg {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .contact-bg .section-title h2 {
+      color: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-item i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #081216;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 120px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .btn-group {
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item {
+        padding-left: 45px;
+      }
+
+      .timeline-icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">MELANIAWATI, S.H.</div>
+    <ul class="nav-links">
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#experience">Pengalaman</a></li>
+      <li><a href="#education">Pendidikan & Sertifikasi</a></li>
+      <li><a href="#skills">Keahlian</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Praktisi Hukum & Mediator Certified</span>
+      <h1>Melaniawati Oktari, S.H., C.P.M.</h1>
+      <h2>Legal Counsel | Certified Professional Mediator | Paralegal Specialist</h2>
+      <p>Lulusan Sarjana Hukum (S.H.) Universitas Islam Balitar dengan predikat Sangat Memuaskan (IPK 3,60). Berpengalaman mendalam dalam penyusunan kontrak, analisis hukum lingkungan, mediasi sengketa, hingga litigasi & non-litigasi.</p>
+      <div class="btn-group">
+        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Hubungi Saya</a>
+        <a href="#experience" class="btn btn-outline"><i class="fa-solid fa-briefcase"></i> Lihat Portofolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="section-title">
+      <h2>Profil Profesional</h2>
+    </div>
+    <div class="card-box" style="max-width: 1000px; margin: 0 auto;">
+      <p style="font-size: 1.1rem; line-height: 1.8;">
+        Saya adalah seorang profesional hukum yang terbukti memiliki dedikasi tinggi, ketelitian administratif, dan keahlian mediasi yang bersertifikasi resmi. Ber Peta Karir sebagai <strong>Legal Counsel</strong> dan <strong>Paralegal Support</strong>, saya berpengalaman menangani riset hukum, penyusunan analisis yuridis (*legal opinion*), penyusunan draf kontrak bisnis, serta koordinasi penanganan kasus baik litigasi maupun alternatif penyelesaian sengketa (ADR).
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section" style="background-color: #F1F5F9;">
+    <div class="section-title">
+      <h2>Pengalaman Kerja</h2>
+    </div>
+    <div class="timeline">
+
+      <!-- Solusi Law Office -->
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="timeline-content">
+          <h3>SOLUSI LAW OFFICE</h3>
+          <div class="timeline-role">Legal Intern / Paralegal Support</div>
+          <div class="timeline-date">7 Agustus 2023 – 10 Agustus 2026</div>
+          <ul>
+            <li>Mengelola dan membantu administrasi serta dokumentasi hukum legal kantor advokat.</li>
+            <li>Melakukan riset hukum mendalam, pelacakan kasus (*case tracing*), dan analisis regulasi.</li>
+            <li>Membantu penyusunan dokumen hukum seperti draf pendapat hukum (*legal opinion*), berkas gugatan, dan analisis perjanjian.</li>
+            <li>Memberikan dukungan fungsional langsung kepada Managing Partner dalam operasional penanganan perkara.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PT. Mega Karya Sentralindo -->
+      <div class="timeline-item">
+        <div class="timeline-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <div class="timeline-content">
+          <h3>PT. MEGA KARYA SENTRALINDO</h3>
+          <div class="timeline-role">Legal Counsel (Full-Time)</div>
+          <div class="timeline-date">Desember 2017 – Juli 2023</div>
+          <ul>
+            <li>Bertanggung jawab secara penuh terhadap perancangan, peninjauan (*review*), dan negosiasi perjanjian/kontrak komersial perusahaan.</li>
+            <li>Memastikan compliance/kepatuhan hukum seluruh aktivitas operasional, supplier, dan general contractor perusahaan.</li>
+            <li>Memberikan nasihat hukum internal bagi jajaran direksi terkait risiko hukum bisnis.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section id="education" class="section">
+    <div class="section-title">
+      <h2>Pendidikan & Sertifikasi Profesi</h2>
+    </div>
+    
+    <div class="grid-2" style="max-width: 1000px; margin: 0 auto;">
+      
+      <!-- Pendidikan -->
+      <div>
+        <h3 style="margin-bottom: 20px; color: var(--primary);"><i class="fa-solid fa-graduation-cap"></i> Pendidikan Formal</h3>
+        <div class="info-card">
+          <h3>Universitas Islam Balitar</h3>
+          <p><strong>Sarjana Hukum (S.H.) - Ilmu Hukum</strong></p>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">2020 – 2024</p>
+          <p style="margin-top: 10px;"><strong>IPK:</strong> 3,60 / 4,00 (Predikat: <em>Sangat Memuaskan</em>)</p>
+          <p style="margin-top: 5px; font-size: 0.9rem; color: var(--text-dark);">
+            <strong>Skripsi:</strong> <em>"Analisis Yuridis terhadap Penerapan Sanksi Administratif dalam Hukum Lingkungan Hidup di Indonesia"</em>
+          </p>
+        </div>
+      </div>
+
+      <!-- Sertifikasi Profesi -->
+      <div>
+        <h3 style="margin-bottom: 20px; color: var(--primary);"><i class="fa-solid fa-certificate"></i> Sertifikasi & Profesi</h3>
+        
+        <div class="info-card" style="margin-bottom: 15px;">
+          <h3>Pendidikan Khusus Profesi Advokat (PKPA)</h3>
+          <p><strong>PERADI & FH Universitas Islam Syekh-Yusuf</strong></p>
+          <span class="cert-badge">Tahun 2026</span>
+          <p style="font-size: 0.85rem; margin-top: 8px;">Telah menyelesaikan seluruh modul pelatihan standar kurikulum PERADI (Litigasi, Non-Litigasi & Legal Reasoning).</p>
+        </div>
+
+        <div class="info-card">
+          <h3>Certified Professional Mediator (C.P.M.)</h3>
+          <p><strong>Dewan Sengketa Indonesia (DSI) & IPPI</strong></p>
+          <span class="cert-badge">Akreditasi Mahkamah Agung RI</span>
+          <p style="font-size: 0.85rem; margin-top: 8px;">Terdaftar & kompeten secara resmi sebagai Mediator Mediasi Sengketa Publik & Privat.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section" style="background-color: #F1F5F9;">
+    <div class="section-title">
+      <h2>Keahlian & Kompetensi</h2>
+    </div>
+    
+    <div class="grid-3" style="max-width: 1100px; margin: 0 auto;">
+      
+      <div class="skill-category">
+        <h3><i class="fa-solid fa-gavel" style="color: var(--accent);"></i> Legal Practices</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Contract Drafting</span>
+          <span class="skill-tag">Legal Research</span>
+          <span class="skill-tag">Legal Opinion</span>
+          <span class="skill-tag">Legal Due Diligence</span>
+          <span class="skill-tag">Hukum Lingkungan</span>
+          <span class="skill-tag">Hukum Perusahaan</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fa-solid fa-handshake" style="color: var(--accent);"></i> ADR & Mediasi</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Sertifikasi Mediator</span>
+          <span class="skill-tag">Negosiasi Kontrak</span>
+          <span class="skill-tag">Resolusi Sengketa</span>
+          <span class="skill-tag">Litigasi & Non-Litigasi</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h3><i class="fa-solid fa-user-check" style="color: var(--accent);"></i> Interpersonal</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Kemampuan Analisis Tinggi</span>
+          <span class="skill-tag">Manajemen Administrasi</span>
+          <span class="skill-tag">Komunikasi Profesional</span>
+          <span class="skill-tag">Integritas & Etika Profesi</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-bg">
+    <div class="section-title">
+      <h2>Hubungi Saya</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <h3>Domisili</h3>
+        <p>Apartemen Grand Pakubuwono Terrace, Kebayoran Lama, Jakarta Selatan</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>Kualifikasi Utama</h3>
+        <p>Sarjana Hukum (S.H.)<br>Certified Mediator (C.P.M.)</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <h3>Email & Profesional</h3>
+        <p>Tersedia untuk Peluang Kerja Sama / Inkuiri Hukum Komersial & Mediasi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Melaniawati Oktari, S.H., C.P.M. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
